@@ -3,15 +3,14 @@ version: 2.1
 orbs:
   slack: circleci/slack@3.4.2
 
-jobs:
-  build:
-    docker:
+workflows:
+  workflow:
+   jobs:
+    build:
+     docker:
       - image: circleci/node:4.8.2
-    steps:
-      - checkout
-      - run: echo "hello world"
-      - slack/notify:
-          message: Build suceeded.
-      - slack-on-failure:
-          message: Build failed.
-
+      steps:
+        - checkout
+        - run: echo "hello world"
+        - slack/status
+        
