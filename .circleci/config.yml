@@ -1,4 +1,8 @@
 version: 2.1
+
+orbs:
+  slack: circleci/clack@3.4.2
+
 jobs:
   build:
     docker:
@@ -6,3 +10,7 @@ jobs:
     steps:
       - checkout
       - run: echo "hello world"
+      - slack/notify:
+          channel: circleci
+          color: '#42e2f4'
+          message: Build executed.
