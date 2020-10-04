@@ -11,6 +11,7 @@ jobs:
       - checkout
       - run: echo "hello world"
       - slack/notify:
-          channel: circleci
-          color: '#42e2f4'
-          message: Build executed.
+          message: Build suceeded.
+      - slack-on-failure:
+          message: Build failed.
+
